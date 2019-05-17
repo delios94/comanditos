@@ -51,6 +51,21 @@
 					td.style.color="#ff9800";
 			}
 		}
+		function buscar(){
+			var sel=document.getElementsByTagName("select")[0];
+			if (sel){
+				var v=sel.value;
+				var tr=document.getElementsByTagName("tr");
+				for (var i=1;i<tr.length;i++){
+					var td=tr[i].getElementsByTagName("td")[2];
+					if (v=="" || v==td.innerText){
+						tr[i].style.display="table-row";
+					}else{
+						tr[i].style.display="none";
+					}
+				}
+			}
+		}
 		addCopy();
 		var loader=setTimeout(function(){
 			addCopy();
@@ -98,6 +113,12 @@
 			font-family: Arial,sans-serif,Helvetica;
 			line-height: 21px;
 		}
+		select{
+			margin-left: 5px;
+			font-size: 16px;
+			font-family: Arial,sans-serif,Helvetica;
+			line-height: 16px;
+		}
 	</style>
 </head>
 <body>
@@ -106,7 +127,17 @@
 			<tr style="font-weight: bold;">
 				<td>Comando</td>
 				<td>Copiar</td>
-				<td>Tipo</td>
+				<td>
+					Tipo
+					<select onchange="buscar()">
+						<option value =""></option>
+						<option value ="Sonido">Sonido</option>
+						<option value ="Imagen">Imagen</option>
+						<option value ="Comando">Comando</option>
+						<option value ="Texto">Texto</option>
+						<option value ="Tiempo">Tiempo</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td><input type="text" value="wooo" readonly></td>
