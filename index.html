@@ -32,6 +32,11 @@
 				}).call(this, i);
 			}
 		}
+		function counter(){
+			var td=document.getElementsByTagName("td")[0];
+			var tr=document.getElementsByTagName("tr").length-1;
+			td.innerText="Comando ("+tr+"/40)";
+		}
 		function colores(){
 			var tr=document.getElementsByTagName("tr");
 			for (var i=1;i<tr.length;i++){
@@ -50,6 +55,7 @@
 		var loader=setTimeout(function(){
 			addCopy();
 			colores();
+			counter();
 		}, 1);
 		document.onload=loader;
 	
