@@ -2,17 +2,185 @@
 <html>
 <head>
 	<title>Comanditos</title>
-	<!--script>
-		function f(){
-			var copyText = document.getElementById("myInput");
-			copyText.select();
-			document.execCommand("bold");
+	<script>
+		function copy(i){
+			var cmd=document.getElementsByTagName("input")[i];
+			if (cmd){
+				cmd.select();
+				document.execCommand("copy");
+				if (document.selection)
+					document.selection.empty();
+				else if (window.getSelection)
+					window.getSelection().removeAllRanges();
+				var txt=document.getElementsByClassName("copiado")[i];
+				txt.style.opacity=1;
+				setTimeout(function(){
+					var tm=setInterval(function(){
+						if (txt.style.opacity<=0)
+							clearInterval(tm);
+						txt.style.opacity-=0.1;
+					}, 100);
+				}, 1000);
+			}
 		}
-	</script-->
+		function addCopy(){
+			var cps=document.getElementsByClassName("copypasta");
+			for (var i=0;i<cps.length;i++){
+				cps[i].innerHTML='<img src="https://img.icons8.com/ios/50/000000/copy.png"><div class="copiado"> <a>Texto copiado</a> </div>';
+				(function (i) {
+					cps[i].addEventListener("click", function(){copy(i);});
+				}).call(this, i);
+			}
+		}
+		function colores(){
+			var tr=document.getElementsByTagName("tr");
+			for (var i=1;i<tr.length;i++){
+				var td=tr[i].getElementsByTagName("td")[2];
+				if (td.innerText=="Sonido")
+					td.style.color="#0027ff";
+				else if (td.innerText=="Texto")
+					td.style.color="#4caf50";
+				else if (td.innerText=="Comando")
+					td.style.color="#8bc34a";
+				else if (td.innerText=="Imagen")
+					td.style.color="#ff9800";
+			}
+		}
+		addCopy();
+		var loader=setTimeout(function(){
+			addCopy();
+			colores();
+		}, 1);
+		document.onload=loader;
+	
+	</script>
+	<style type='text/css'>
+		table{
+			margin: 0 auto;
+			background-position-x: center;
+			font-size: 18px;
+			font-family: Arial,sans-serif,Helvetica;
+			line-height: 21px;
+		}
+		td{
+			padding: 10px;
+		}
+		tr{
+			background-color: #eee;
+		}
+		.center{
+			text-align: center;
+		}
+		.copypasta{
+			cursor: pointer;
+		}
+		.copypasta img{
+			width: 28px;
+		}
+		.copiado{
+			background-color: #999;
+			color: #fff;
+			padding: 5px;
+			width: 115px;
+			margin: -33px 0px 0px -33px;
+			position: absolute;
+			opacity: 0;
+		}
+		input{
+			background: transparent;
+			border: 0;
+			outline: 0;
+			width: 200px;
+			font-size: 18px;
+			font-family: Arial,sans-serif,Helvetica;
+			line-height: 21px;
+		}
+	</style>
 </head>
 <body>
-	<a>
-		b
-	</a>
+	<table>
+		<tbody>
+			<tr class="center" style="font-weight: bold;">
+				<td>Comando</td>
+				<td>Copiar</td>
+				<td>Tipo</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="wooo" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Sonido</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="oof" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Sonido</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="tilo" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Imagen</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="slime" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Sonido</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="rokeliss" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Comando</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="saludame" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Texto</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="layton" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Imagen</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="rip" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Sonido</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="wizard" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Imagen</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="prime" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Comando</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="donated" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Comando</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="guapa" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Comando</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="(cultivos stardew valley)" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Imagen</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="uptime" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Tiempo</td>
+			</tr>
+			<tr>
+				<td><input type="text" value="pum" readonly></td>
+				<td class="copypasta center"></td>
+				<td>Sonido</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>
