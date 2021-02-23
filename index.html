@@ -4,7 +4,7 @@
 	<title>Comanditos</title>
 	<script>
 		function copy(i){
-			var cmd=document.getElementsByTagName("input")[i];
+			var cmd=document.getElementsByTagName("input")[i+1];
 			if (cmd){
 				var val = cmd.value.split("/");
 				var raiz = document.getElementById("raiz");
