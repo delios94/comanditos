@@ -6,7 +6,12 @@
 		function copy(i){
 			var cmd=document.getElementsByTagName("input")[i];
 			if (cmd){
-				cmd.select();
+				var val = cmd.value.split("/");
+				var raiz = document.getElementById("raiz");
+				var rnd = Math.floor(Math.random() * val.length);
+				var nuevo = val[rnd];
+				raiz.value = nuevo;
+				raiz.select();
 				document.execCommand("copy");
 				if (document.selection)
 					document.selection.empty();
@@ -122,6 +127,7 @@
 	</style>
 </head>
 <body>
+<input type="text" id="raiz" style="display: none;" value="" readonly>
 	<table>
 		<tbody>
 			<tr style="font-weight: bold;">
@@ -160,11 +166,6 @@
 				<td>Sonido</td>
 			</tr>
 			<tr>
-				<td><input type="text" value="rokeliss" readonly></td>
-				<td class="copypasta"></td>
-				<td>Comando</td>
-			</tr>
-			<tr>
 				<td><input type="text" value="saludame/me saludas" readonly></td>
 				<td class="copypasta"></td>
 				<td>Texto</td>
@@ -178,11 +179,6 @@
 				<td><input type="text" value="rip" readonly></td>
 				<td class="copypasta"></td>
 				<td>Sonido</td>
-			</tr>
-			<tr>
-				<td><input type="text" value="wizard/magia" readonly></td>
-				<td class="copypasta"></td>
-				<td>Imagen</td>
 			</tr>
 			<tr>
 				<td><input type="text" value="prime/gratis" readonly></td>
@@ -201,7 +197,7 @@
 			</tr>
 			<tr>
 				<td><input type="text" value="(cultivos stardew valley)" readonly></td>
-				<td class="copypasta"></td>
+				<td></td>
 				<td>Imagen</td>
 			</tr>
 			<tr>
@@ -268,11 +264,6 @@
 				<td><input type="text" value="streamloots/cartas" readonly></td>
 				<td class="copypasta"></td>
 				<td>Imagen</td>
-			</tr>
-			<tr>
-				<td><input type="text" value="coyote/correcaminos" readonly></td>
-				<td class="copypasta"></td>
-				<td>Sonido</td>
 			</tr>
 			<tr>
 				<td><input type="text" value="qué tensión" readonly></td>
